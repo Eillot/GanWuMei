@@ -17,6 +17,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -157,7 +158,8 @@ public class MainActivity extends BaseActivity implements HasComponent<ActivityC
 
     private void initView() {
 
-        drawerToggle = new ActionBarDrawerToggle(MainActivity.this, drawerLayout, R.string.hello_world, R.string.hello_world);
+        drawerToggle = new ActionBarDrawerToggle(MainActivity.this, drawerLayout, R.string.OPEN_DRAWER_CONTENT_DESC_RES
+                , R.string.OPEN_DRAWER_CONTENT_DESC_RES);
         drawerLayout.setDrawerListener(drawerToggle);
 
         getSupportActionBar().setHomeButtonEnabled(true);
@@ -201,6 +203,17 @@ public class MainActivity extends BaseActivity implements HasComponent<ActivityC
         });
     }
 
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        switch (keyCode) {
+            case KeyEvent.KEYCODE_BACK:
+                if (getResources().getConfiguration().orientation ==
+                        Configuration.ORIENTATION_LANDSCAPE) {
+                    return true;
+                }
+        }
+        return super.onKeyDown(keyCode, event);
+    }
 
     @Override
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {

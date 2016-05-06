@@ -5,7 +5,7 @@
 
 ## 2016-5-05
 
->项目进入1.0阶段
+>项目进入0.9.8阶段
 
 本项目主要由3部分组成：
 - 干货主界面，每日妹子预览list；
@@ -26,6 +26,7 @@
 - 分享功能
 - GitHub用户登录功能
 - 缓存功能
+- 还有一大波BUG等着我去爱护呢~
 
 > 如果您对Gan物妹有什么自己的想法和意见欢迎`Fork`和`Issues` ♪(＾∀＾●)ﾉ ，谢谢支持！
 
@@ -34,6 +35,10 @@
 ### 关于作者我：
 
 呆毛我为大四即将毕业小朋友一枚，大四上学期开始的Android开发，至今约半年。欢迎前来勾搭哟~(✿◡‿◡)~
+
+勾搭微博：[Dimon-喰](http://weibo.com/dscott)
+
+勾搭博客：[Dimon's Program Basement](https://dimon94.github.io/)
 
 ### 关于Gan物妹：
 
@@ -66,11 +71,6 @@
 
     compile 'com.squareup.okhttp3:okhttp:3.1.2'
     compile 'com.squareup.okhttp3:logging-interceptor:3.1.2'
-
-    compile 'com.umeng.analytics:analytics:latest.integration'
-
-    compile 'com.github.florent37:materialviewpager:1.1.3'
-    compile 'com.github.ksoichiro:android-observablescrollview'
 
     provided 'javax.annotation:jsr250-api:1.0' // Java标注
     provided 'org.glassfish:javax.annotation:10.0-b28'//添加android缺失的部分javax注解

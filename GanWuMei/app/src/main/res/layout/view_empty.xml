@@ -42,13 +42,4 @@
         android:autoLink="web"
         android:text="@string/tip_empty_ganwu"/>
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:paddingBottom="50dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/logo_white"
-        android:layout_alignParentBottom="true"/>
-
 </RelativeLayout>

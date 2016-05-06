@@ -88,13 +88,6 @@ public class GanWuFragment extends BaseFragment {
     @Inject
     DataManager mDataManager;
 
-    public GanWuFragment() {
-    }
-
-    public GanWuFragment newInstance() {
-        return new GanWuFragment();
-    }
-
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -130,6 +123,7 @@ public class GanWuFragment extends BaseFragment {
         }
         trySetupSwipeRefresh();
         new Handler().postDelayed(() -> setRequestDataRefresh(true), 358);
+        KLog.a("load");
         loadData(false);
         initRecyclerView();
         return view;
@@ -172,7 +166,6 @@ public class GanWuFragment extends BaseFragment {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(images3 -> {
                     if (clean) mMeizhisList.clear();
-                    mMeizhisList.addAll(images3);
                     mGanWuAdapter.updateItems(images3,true);
                     setRequestDataRefresh(false);
                     mHasLoadedOnce = true;
@@ -232,8 +225,8 @@ public class GanWuFragment extends BaseFragment {
             if (meizhi == null) return;
             if (v == meizhiView && !mMeizhiBeTouched) {
                 mMeizhiBeTouched = true;
-                Picasso.with(context()).load(meizhi.getUrl()).fetch(new Callback() {
 
+                Picasso.with(context()).load(meizhi.getUrl()).fetch(new Callback() {
                     @Override
                     public void onSuccess() {
                         mMeizhiBeTouched = false;
@@ -245,6 +238,7 @@ public class GanWuFragment extends BaseFragment {
                         mMeizhiBeTouched = false;
                     }
                 });
+
             } else if (v == card) {
                 startGanDailyActivity(meizhi.getDate());
             }
@@ -314,6 +308,7 @@ public class GanWuFragment extends BaseFragment {
         if (!isPrepared || !isVisible || mHasLoadedOnce) {
             return;
         }
+        KLog.a("loadData");
         loadData(false);
     }
 

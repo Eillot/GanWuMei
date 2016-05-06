@@ -47,7 +47,6 @@ import com.dimon.ganwumei.ui.base.BaseActivity;
 import com.dimon.ganwumei.util.Preconditions;
 import com.dimon.ganwumei.util.ToastUtils;
 import com.socks.library.KLog;
-import com.umeng.analytics.MobclickAgent;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -240,7 +239,6 @@ public class WebActivity extends BaseActivity {
     protected void onPause() {
         if (mWebView != null) mWebView.onPause();
         super.onPause();
-        MobclickAgent.onPause(this);
     }
 
 
@@ -248,7 +246,6 @@ public class WebActivity extends BaseActivity {
     protected void onResume() {
         super.onResume();
         if (mWebView != null) mWebView.onResume();
-        MobclickAgent.onResume(this);
     }
 
 

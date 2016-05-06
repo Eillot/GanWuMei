@@ -24,9 +24,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.newsfeed.activity.MainActivity">
+            android:name=".ui.newsfeed.activity.MainActivity"
+            android:launchMode="singleTask">
         </activity>
-        <activity android:name=".ui.newsfeed.activity.GanDailyActivity"/>
+        <activity android:name=".ui.newsfeed.activity.GanDailyActivity"
+            android:launchMode="singleTask">
+        </activity>
         <activity
             android:name=".ui.newsfeed.activity.PictureActivity"
             android:label="@string/title_activity_picture"

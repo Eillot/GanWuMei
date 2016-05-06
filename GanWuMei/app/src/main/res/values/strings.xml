@@ -45,7 +45,8 @@
     <string name="news_three_title">Australia in charge of second Test against West Indies in Jamaica</string>
     <string name="news_three_desc">Australia in charge of second Test against West Indies in Jamaica</string>
     <string name="news_four_title">Sweden royal wedding</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="OPEN_DRAWER_CONTENT_DESC_RES">openDrawerContentDescRes</string>
+    <string name="CLOSE_DRAWER_CONTENT_DESC_RES">closeDrawerContentDescRes</string>
     <string name="snap_load_fail">加载失败，请重试</string>
     <string name="retry">重试</string>
     <string name="title_activity_picture">PictureActivity</string>

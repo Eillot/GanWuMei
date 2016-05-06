@@ -30,7 +30,6 @@ import com.dimon.ganwumei.R;
 import com.dimon.ganwumei.ui.base.BaseActivity;
 import com.dimon.ganwumei.util.ToastUtils;
 import com.squareup.picasso.Picasso;
-import com.umeng.analytics.MobclickAgent;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -65,6 +64,7 @@ public class PictureActivity extends BaseActivity {
 
 
     @Override protected void onCreate(Bundle savedInstanceState) {
+        overridePendingTransition(R.anim.scale_in, R.anim.alpha_out);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_picture);
         ButterKnife.bind(this);
@@ -98,18 +98,22 @@ public class PictureActivity extends BaseActivity {
     }
     @Override public void onResume() {
         super.onResume();
-        MobclickAgent.onResume(this);
     }
 
 
     @Override public void onPause() {
         super.onPause();
-        MobclickAgent.onPause(this);
     }
 
 
     @Override protected void onDestroy() {
         super.onDestroy();
         ButterKnife.unbind(this);
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.scale_in, R.anim.alpha_out);
     }
 }
