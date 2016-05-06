@@ -12,6 +12,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -45,7 +46,7 @@ import butterknife.ButterKnife;
 /**
  * 主页面
  */
-public class MainActivity extends BaseActivity implements HasComponent<ActivityComponent> {
+public class MainActivity extends BaseActivity implements HasComponent<ActivityComponent>, NavigationView.OnNavigationItemSelectedListener {
 
     @Bind(R.id.toolbar)
     Toolbar mToolbar;
@@ -161,10 +162,8 @@ public class MainActivity extends BaseActivity implements HasComponent<ActivityC
         drawerToggle = new ActionBarDrawerToggle(MainActivity.this, drawerLayout, R.string.OPEN_DRAWER_CONTENT_DESC_RES
                 , R.string.OPEN_DRAWER_CONTENT_DESC_RES);
         drawerLayout.setDrawerListener(drawerToggle);
-
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        mNavigation.setItemIconTintList(null);
         rootLayout = (CoordinatorLayout) findViewById(R.id.rootLayout);
         fabBtn = (FloatingActionButton) findViewById(R.id.fabBtn);
         fabBtn.setOnClickListener(new View.OnClickListener() {
@@ -178,29 +177,7 @@ public class MainActivity extends BaseActivity implements HasComponent<ActivityC
             }
         });
 
-        mNavigation.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(MenuItem item) {
-                int id = item.getItemId();
-                switch (id){
-                    case R.id.navItem1:
-                        Intent intent1 = new Intent(MainActivity.this,MainActivity.class);
-                        startActivity(intent1);
-                        break;
-                    case R.id.navItem2:
-                        Toast.makeText(MainActivity.this, "呆毛我还没做收藏夹功能呢/(ㄒoㄒ)/~~", Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.navItem3:
-                        Intent intent3 = new Intent(MainActivity.this,AboutActivity.class);
-                        startActivity(intent3);
-                        break;
-                    case R.id.navItem4:
-                        Toast.makeText(MainActivity.this, "这是呆毛我第一个练手小项目/(ㄒoㄒ)/~~谢谢支持~~！", Toast.LENGTH_SHORT).show();
-                        break;
-                }
-                return false;
-            }
-        });
+        mNavigation.setNavigationItemSelectedListener(this);
     }
 
     @Override
@@ -213,6 +190,15 @@ public class MainActivity extends BaseActivity implements HasComponent<ActivityC
                 }
         }
         return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
     }
 
     @Override
@@ -239,19 +225,16 @@ public class MainActivity extends BaseActivity implements HasComponent<ActivityC
         if (drawerToggle.onOptionsItemSelected(item))
             return true;
         int id = item.getItemId();
-        switch (id){
+        switch (id) {
             case R.id.action_settings:
                 return true;
             case R.id.action_about:
-                Intent intent = new Intent(MainActivity.this,AboutActivity.class);
+                Intent intent = new Intent(MainActivity.this, AboutActivity.class);
                 startActivity(intent);
                 return true;
             case R.id.action_search:
                 return true;
             case R.id.action_share:
-                return true;
-            case android.R.id.home:
-                onBackPressed();
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -266,5 +249,29 @@ public class MainActivity extends BaseActivity implements HasComponent<ActivityC
     @Override
     public ActivityComponent getComponent() {
         return activityComponent;
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        switch (id) {
+            case R.id.navItem1:
+                Intent intent1 = new Intent(MainActivity.this, MainActivity.class);
+                startActivity(intent1);
+                break;
+            case R.id.navItem2:
+                Toast.makeText(MainActivity.this, "呆毛我还没做收藏夹功能呢/(ㄒoㄒ)/~~", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.navItem3:
+                Intent intent3 = new Intent(MainActivity.this, AboutActivity.class);
+                startActivity(intent3);
+                break;
+            case R.id.navItem4:
+                Toast.makeText(MainActivity.this, "这是呆毛我第一个练手小项目/(ㄒoㄒ)/~~谢谢支持~~！", Toast.LENGTH_SHORT).show();
+                break;
+        }
+
+        drawerLayout.closeDrawer(GravityCompat.START);
+        return true;
     }
 }
