@@ -87,6 +87,7 @@ public class PictureActivity extends BaseActivity {
                     .setPositiveButton(android.R.string.ok,
                             (dialog, which) -> {
                                 saveImageToGallery();
+//                                TODO：保存图片逻辑
                                 dialog.dismiss();
                             })
                     .show();

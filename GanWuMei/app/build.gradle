@@ -16,7 +16,7 @@ android {
     buildTypes {
         release {
             buildConfigField "boolean", "LOG_DEBUG", "false"            // 不显示Log
-            minifyEnabled true                                          // 混淆
+            minifyEnabled false                                          // 混淆
             shrinkResources true                                        // 移除无用的resource文件
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
