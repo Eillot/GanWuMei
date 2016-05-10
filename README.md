@@ -38,7 +38,7 @@
 
 勾搭微博：[Dimon-喰](http://weibo.com/dscott)
 
-勾搭邮箱：[elisabethzhen@163.com](elisabethzhen@163.com)
+勾搭邮箱：elisabethzhen@163.com
 
 勾搭博客：[Dimon's Program Basement](https://dimon94.github.io/)
 
